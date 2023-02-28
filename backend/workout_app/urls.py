@@ -1,10 +1,20 @@
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import WeekViewSet, DayViewSet, WorkoutViewSet, ProfileViewSet
+from . import views
+# from rest_framework.routers import DefaultRouter
+# from .views import WeekViewSet, DayViewSet, WorkoutViewSet, ProfileViewSet
 
-router = DefaultRouter()
-router.register(r'week', WeekViewSet, basename='week')
-router.register(r'day', DayViewSet, basename='day')
-router.register(r'workout', WorkoutViewSet, basename='workout')
-router.register(r'profile', ProfileViewSet, basename='profile')
-urlpatterns = router.urls
+
+urlpatterns = [
+    path('', views.WeekViewSet.as_view()),
+    path('<int:week_number>', views.WeekViewSet.as_view()),
+    path('<int:week_number>/<int:day_number>', views.DayViewSet.as_view()),
+    path('<int:week_number>/<int:day_number>/<int:', views.DayViewSet.as_view()),
+]
+
+
+# router = DefaultRouter()
+# router.register(r'week', WeekViewSet, basename='week')
+# router.register(r'day', DayViewSet, basename='day')
+# router.register(r'workout', WorkoutViewSet, basename='workout')
+# router.register(r'profile', ProfileViewSet, basename='profile')
+# urlpatterns = router.urls

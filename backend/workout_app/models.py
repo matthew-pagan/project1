@@ -13,7 +13,7 @@ class Week(models.Model):
         return f'Week {self.week_number}'
 
 class Day(models.Model):
-    week = models.ForeignKey(Week, on_delete=models.CASCADE) #week_number in class Week
+    week = models.ForeignKey(Week, on_delete=models.CASCADE, related_name='days') #week_number in class Week
     day_number = models.CharField(max_length=1) # 1, 2 --only 7 days in one week, testing out CharField
 
     class Meta:
@@ -24,8 +24,8 @@ class Day(models.Model):
         return f'Day {self.day_number}'
 
 class Workout(models.Model):
-    week = models.ForeignKey(Week, on_delete=models.CASCADE, default='1')  
-    day = models.ForeignKey(Day, on_delete=models.CASCADE, default='1')
+    week = models.ForeignKey(Week, on_delete=models.CASCADE, related_name='workouts', default='1')  
+    day = models.ForeignKey(Day, on_delete=models.CASCADE, related_name='workouts', default='1')
     title = models.CharField(max_length=50) # Back Squat, High Pulls, Pull to Hip w/ Pause+Clean+Jerk
     note = models.CharField(max_length=255, null=True, blank=True) # brief note or just general directive instead of numbers (e.g., 'to a heavy 2RM for the day')
     sets = models.CharField(max_length=2, null=True, blank=True) # 5, 12
@@ -40,7 +40,7 @@ class Workout(models.Model):
         return self.title
     
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE) 
     WEIGHTS_CHOICES = [ (1, "LB"), (2, "KG")]
     weights = models.IntegerField(choices=WEIGHTS_CHOICES, default='1') # metric and english, or pounds and kilos
     max_snatch = models.IntegerField()
