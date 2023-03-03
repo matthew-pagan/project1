@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import WeekAPI from "../api/WeekAPI";
 import WeekList from "../components/WeekList";
+import Signout from "../components/Signout";
 // import { useParams } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import WeekPage from './WeekPage.js'
+import { Link } from "react-router-dom"
 
 function HomePage() {
   const [weeks, setWeeks] = useState([]);  // holds all data
@@ -41,7 +43,7 @@ function HomePage() {
           element={<WeekPage weeks={weeks}/>}
         />
       </Routes>
-      
+      <Link to='/signin' text="signout"><Signout /></Link>
     </div>
   );
 }

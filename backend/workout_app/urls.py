@@ -6,9 +6,10 @@ from . import views
 
 urlpatterns = [
     path('', views.WeekViewSet.as_view()),
-    path('<int:week_number>', views.WeekViewSet.as_view()),
-    path('<int:week_number>/<int:day_number>', views.DayViewSet.as_view()),
-    path('<int:week_number>/<int:day_number>/<int:', views.DayViewSet.as_view()),
+    path('profile/', views.ProfileViewSet.as_view()),
+    # path('<int:week_number>', views.WeekViewSet.as_view()),
+    # path('<int:week_number>/<int:day_number>', views.DayViewSet.as_view()),
+    # path('<int:week_number>/<int:day_number>/<int:', views.DayViewSet.as_view()),
 ]
 
 

@@ -7,7 +7,7 @@ function WorkoutList (props) {
       return 'Hello there is nothing' // change to 'There are no workouts yet' or null when done testing
     }
     
-    // figure out how to list only the days of the specific week page
+    
     return props.workouts.map((workout, index) => {
       return (
         <ul key={index}>
@@ -17,7 +17,8 @@ function WorkoutList (props) {
     })
   }
   
-  console.log("Workouts in WorkoutList:", props.workouts);  // delete when done testing
+  console.log(props.workouts)
+  // console.log("Workouts in WorkoutList:", props.workouts);  // delete when done testing
 
   return (
     <div>

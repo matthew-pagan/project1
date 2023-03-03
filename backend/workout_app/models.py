@@ -14,7 +14,7 @@ class Week(models.Model):
 
 class Day(models.Model):
     week = models.ForeignKey(Week, on_delete=models.CASCADE, related_name='days') #week_number in class Week
-    day_number = models.CharField(max_length=1) # 1, 2 --only 7 days in one week, testing out CharField
+    day_number = models.CharField(max_length=4) # 3.1, 3.2, 10.6 --only 10 weeks, only 7 days each week, testing out CharField
 
     class Meta:
         verbose_name = "day"
@@ -25,7 +25,7 @@ class Day(models.Model):
 
 class Workout(models.Model):
     week = models.ForeignKey(Week, on_delete=models.CASCADE, related_name='workouts', default='1')  
-    day = models.ForeignKey(Day, on_delete=models.CASCADE, related_name='workouts', default='1')
+    day = models.ForeignKey(Day, on_delete=models.CASCADE, related_name='workouts', default='1.1')
     title = models.CharField(max_length=50) # Back Squat, High Pulls, Pull to Hip w/ Pause+Clean+Jerk
     note = models.CharField(max_length=255, null=True, blank=True) # brief note or just general directive instead of numbers (e.g., 'to a heavy 2RM for the day')
     sets = models.CharField(max_length=2, null=True, blank=True) # 5, 12
@@ -40,13 +40,13 @@ class Workout(models.Model):
         return self.title
     
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE) 
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     WEIGHTS_CHOICES = [ (1, "LB"), (2, "KG")]
-    weights = models.IntegerField(choices=WEIGHTS_CHOICES, default='1') # metric and english, or pounds and kilos
-    max_snatch = models.IntegerField()
-    max_cleanjerk = models.IntegerField()
-    max_frontsquat = models.IntegerField()
-    max_backsquat = models.IntegerField()
+    weights = models.IntegerField(choices=WEIGHTS_CHOICES, default=1, null=False, blank=False) # metric and english, or pounds and kilos
+    max_snatch = models.IntegerField(default=0, null=False, blank=False)
+    max_cleanjerk = models.IntegerField(default=0, null=False, blank=False)
+    max_frontsquat = models.IntegerField(default=0, null=False, blank=False)
+    max_backsquat = models.IntegerField(default=0, null=False, blank=False)
 
     def __str__(self):
-        return self.user
+        return self.user.username

@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'workout_app',
     'rest_framework',
     'corsheaders',
+    'accounts',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -73,7 +75,7 @@ WSGI_APPLICATION = 'workout_proj.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'workoutdb', #BASE_DIR / 'db.sqlite3',
+        'NAME': 'workoutdb', 
     }
 }
 
@@ -118,3 +120,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated', # protects every resource by default
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication', # how we will authenticate
+    ]
+}
