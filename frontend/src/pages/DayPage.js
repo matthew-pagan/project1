@@ -12,9 +12,6 @@ function DayPage({days}) {
   // console.log(params.day_number) // delete when done testing. day_number for use to show only the days under that week
   const answer = days.find(day => day.day_number === params.day_number)
   
-  
-  
-
   // console.log("Workouts in DayPage", workouts); // delete when done testing
 
   return (

@@ -4,7 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage.js'
 import SigninPage from './pages/SigninPage.js'
 import SignupPage from './pages/SignupPage.js'
-import ProfilePage from './pages/ProfilePage.js'
+import AllProfilesPage from './pages/AllProfilesPage.js'
+import StartPage from './pages/StartPage.js'
 
 
 function App() {
@@ -12,10 +13,11 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
+        <Route exact path="/app/" element={<StartPage />} />
           <Route exact path="/workouts/*" element={<HomePage />} />
           <Route exact path="/signin/" element={<SigninPage />} />
           <Route exact path="/signup/" element={<SignupPage />} />
-          <Route exact path="/profile/*" element={<ProfilePage />} />
+          <Route exact path="/profile/*" element={<AllProfilesPage />} />
         </Routes>
       </BrowserRouter>
     </div>
@@ -23,3 +25,21 @@ function App() {
 }
 
 export default App;
+
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <BrowserRouter>
+//         <Routes>
+//           <Route exact path="/workouts/*" element={<HomePage />} />
+//           <Route exact path="/signin/" element={<SigninPage />} />
+//           <Route exact path="/signup/" element={<SignupPage />} />
+//           <Route exact path="/profile/*" element={<ProfilePage />} />
+//         </Routes>
+//       </BrowserRouter>
+//     </div>
+//   );
+// }
+
+// export default App;

@@ -34,7 +34,7 @@ const SignupPage = () => {
       const data = await res.json();
       console.log(data);
       // Navigate to the profile page
-      navigate('/profile/');
+      navigate('/signin/');
     } catch (err) {
       console.error(err);
     }
@@ -42,7 +42,7 @@ const SignupPage = () => {
 
   return (
     <div>
-      <h1>Signup</h1>
+      <h1>Create An Account</h1>
       <form onSubmit={e => onSubmit(e)}>
         <input
           type="text"
@@ -51,6 +51,8 @@ const SignupPage = () => {
           value={username}
           onChange={e => onChange(e)}
         />
+        <br></br>
+        <br></br>
         <input
           type="password"
           placeholder="Password"
@@ -58,6 +60,8 @@ const SignupPage = () => {
           value={password}
           onChange={e => onChange(e)}
         />
+        <br></br>
+        <br></br>
         <input type="submit" value="Signup" />
       </form>
     </div>

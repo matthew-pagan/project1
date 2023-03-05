@@ -40,12 +40,12 @@ const SigninPage = () => {
   }
 
   if (redirect) {
-    return <Navigate to="/workouts" replace={true} />
+    return <Navigate to="/profile/`${:profileID}`/" replace={true} />  // change navigation to /profile/ for adding data based on Profile model fields
   }
 
   return (
     <div>
-      <h1>Get Token</h1>
+      <h1>Please Sign In</h1>
       {error && <p>{error}</p>} 
       {/* displays error message if error state is not null */}
       <form onSubmit={e => onSubmit(e)}>
@@ -56,6 +56,8 @@ const SigninPage = () => {
           value={username}
           onChange={e => onChange(e)}
         />
+        <br></br>
+        <br></br>
         <input
           type="password"
           placeholder="Password"
@@ -63,10 +65,10 @@ const SigninPage = () => {
           value={password}
           onChange={e => onChange(e)}
         />
+        <br></br>
+        <br></br>
         <input type="submit" value="Signin" />
       </form>
-
-      {/* <Link to="/">Go Back</Link> */}
     </div>
   )
 }

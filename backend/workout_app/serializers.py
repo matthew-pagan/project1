@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Week, Day, Workout, Profile
+from .models import Week, Day, Workout, Profile, User
 
 # Serializers define the API representation.
 
@@ -24,7 +24,17 @@ class WeekSerializer(serializers.ModelSerializer):
 
 
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'password']
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        user = User.objects.create_user(**validated_data)
+        return user       
+
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = '__all__'
+        fields = ['user', 'weights', 'max_snatch', 'max_cleanjerk', 'max_frontsquat', 'max_backsquat']

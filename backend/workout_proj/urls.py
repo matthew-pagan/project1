@@ -5,5 +5,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('workouts/', include(('workout_app.urls', 'app_name'), namespace='workouts')),
     path('accounts/', include("accounts.urls")),
-    
 ]

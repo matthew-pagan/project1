@@ -47,6 +47,7 @@ class Profile(models.Model):
     max_cleanjerk = models.IntegerField(default=0, null=False, blank=False)
     max_frontsquat = models.IntegerField(default=0, null=False, blank=False)
     max_backsquat = models.IntegerField(default=0, null=False, blank=False)
+    list_display = ('id', 'user')
 
     def __str__(self):
         return self.user.username
