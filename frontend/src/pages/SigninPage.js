@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { Routes, Route } from "react-router-dom";
 import { Navigate } from 'react-router-dom'
 
 const SigninPage = () => {
@@ -40,7 +41,7 @@ const SigninPage = () => {
   }
 
   if (redirect) {
-    return <Navigate to="/profile/`${:profileID}`/" replace={true} />  // change navigation to /profile/ for adding data based on Profile model fields
+    return <Navigate to="/create/" replace={true} />  // change navigation to /profile/ for adding data based on Profile model fields
   }
 
   return (

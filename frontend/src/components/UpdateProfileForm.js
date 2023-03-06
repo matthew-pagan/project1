@@ -4,25 +4,31 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-const UpdateProfileForm = ({ profileId }) => {
+const UpdateProfileForm = ({ profile }) => {  //it is asssuming we have the profileID here, CONSOLE.LOG THIS! i dont think it is there.  if its not then do what we did with profileform.js and to an axios requeset and use that response to get your user id.
   const [formData, setFormData] = useState({
-    // id: null,
+    user: 'profile.user',
     weights: '',
     max_snatch: '',
     max_cleanjerk: '',
     max_frontsquat: '',
     max_backsquat: '',
   });
-
+  console.log(profile.user, "This is the profile user")  // delete when done
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
   const navigate = useNavigate()
 
+
   useEffect(() => {
     // shows user profile
     const fetchProfile = async () => {
+      const token = localStorage.getItem("token");
       try {
-        const response = await axios.get('http://127.0.0.1:8000/workouts/profile/${profileID}/')
+        const response = await axios.get('http://127.0.0.1:8000/workouts/profile/' + profile.user + '/', {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        })
         setFormData(response.data)
       } catch (err) {
         console.log(err.response.data)
@@ -32,7 +38,7 @@ const UpdateProfileForm = ({ profileId }) => {
   }, []);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
+    setFormData({ ...formData, user: profile.user, [e.target.name]: e.target.value })
   };
 
   const handleUpdate = async (e) => {
@@ -56,8 +62,13 @@ const UpdateProfileForm = ({ profileId }) => {
       return;
     }
     // submission of the updated information
+    const token = localStorage.getItem("token");
     try {
-      await axios.put('http://127.0.0.1:8000/workouts/profile/${profileID}/', formData)
+      await axios.put('http://127.0.0.1:8000/workouts/profile/' + profile.user + '/', formData, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      })
       setErrors({})
       setSubmitted(true)
       alert('Profile has been updated')
@@ -70,9 +81,14 @@ const UpdateProfileForm = ({ profileId }) => {
   const handleDelete = async (e) => {
     e.preventDefault()
     if (window.confirm('Are you sure you want to delete your profile?')) {
+      const token = localStorage.getItem("token");
       try {
-        await axios.delete('http://127.0.0.1:8000/workouts/profile/${profileID}/')
-        navigate('/profile/') // goes back to create profile page
+        await axios.delete('http://127.0.0.1:8000/workouts/profile/' + profile.user + '/', {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        })
+        navigate('/create/') // goes back to create profile page
         alert('Profile has been deleted')
       } catch (err) {
         console.log(err.response.data)
@@ -96,10 +112,6 @@ const UpdateProfileForm = ({ profileId }) => {
               <option value='2'>Metric -- KGs</option>
             </select>
           </div>
-        <div className='form-group'>
-          <label>Weights Unit:</label>
-          <input type='number' id='weights' name='weights' value={formData.weights} onChange={handleChange} className='form-control' />
-        </div>
         <div className='form-group'>
           <label>Max Snatch:</label>
           <input type='number' id='max_snatch' name='max_snatch' value={formData.max_snatch} onChange={handleChange} className='form-control' />

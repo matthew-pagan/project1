@@ -73,17 +73,17 @@ class ProfileViewSet(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
-    def get(self, request, user_id=None): # id or title?
+    def get(self, request, user_id=None): # id?
         if user_id: 
-            data = Profile.objects.get(id=user_id)
+            data = Profile.objects.get(user_id=user_id)
             serializer = ProfileSerializer(data)
         else:
             data = Profile.objects.all()
             serializer = ProfileSerializer(data, many=True)
         return Response({"result": serializer.data})
 
-    def put(self, request, user_id=None): # id or title?
-        profile = Profile.objects.get(id=user_id)
+    def put(self, request, user_id=None): # id?
+        profile = Profile.objects.get(user_id=user_id)
         serializer = ProfileSerializer(profile, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -92,6 +92,6 @@ class ProfileViewSet(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, user_id=None):
-        profile = Profile.objects.get(id=user_id)
+        profile = Profile.objects.get(user_id=user_id)
         profile.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

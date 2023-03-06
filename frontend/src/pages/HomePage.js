@@ -48,7 +48,7 @@ function HomePage() {
       </Routes>
       <br></br>
       <br></br>
-      <Link to='/signin' text="signout"><Signout /></Link>
+      <Link to='/app' text="signout"><Signout /></Link>
     </div>
   );
 }

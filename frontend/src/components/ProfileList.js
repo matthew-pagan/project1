@@ -6,23 +6,24 @@ function ProfileList (props) {
     if (!props.profiles) {
       return 'No profile exists' // change to null when done testing
     }
+
+    const sortedProfiles = props.profiles.sort((a, b) => a.user - b.user)
     
-    
-    return props.profiles.map((profile, index) => {
+    return sortedProfiles.map((profile, index) => {
       return (
-        <ul key={index}>
-          <li><Link to={`../${profile.user}/`}> { profile.user }</Link></li>
+        <ul class="no-bullet" key={index}>
+          <li><Link to={`../${profile.user}/`}>Athlete { profile.user }</Link></li>
         </ul>
       )
     })
   }
   
-  console.log("Profiles in ProfileList", props.profiles)
+  // console.log("Profiles in ProfileList", props.profiles)
   // console.log("Workouts in WorkoutList:", props.workouts);  // delete when done testing
 
   return (
     <div>
-      <h3>Hello World</h3>
+      <h3>This part is from ProfileList.js</h3>
     <ul>{ renderProfiles() }</ul>
     </div>
   )

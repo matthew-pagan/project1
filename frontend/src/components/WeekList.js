@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import '../App.css';
 
 function WeekList (props) {
 
@@ -9,9 +10,11 @@ function WeekList (props) {
     
     return props.weeks.map((week, index) => {
       return (
-        <ul key={index}>
-          <li><Link to={`week/${week.week_number}/`}>WEEK { week.week_number }</Link></li>
-        </ul>
+        <div className="list-container">
+          <ul class="no-bullet" key={index} >
+            <li><Link to={`week/${week.week_number}/`}>WEEK { week.week_number }</Link></li>
+          </ul>
+        </div>
       )
     })
   }
@@ -22,7 +25,9 @@ function WeekList (props) {
   return (
     <div>
       <h3>Pick the Week</h3>
-    <ul>{ renderWeeks() }</ul>
+      <div className="list-container">
+        <ul>{ renderWeeks() }</ul>
+      </div>
     </div>
   )
 }

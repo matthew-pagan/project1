@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import "../App.css"
 
 function DayList (props) {
   
@@ -10,7 +11,7 @@ function DayList (props) {
     // figure out how to list only the days of the specific week page
     return props.days.map((day, index) => {
       return (
-        <ul key={index}>
+        <ul class="no-bullet" key={index}>
           <li><Link to={`day/${day.day_number}/`}>DAY { day.day_number.slice(-1) }</Link></li>
         </ul>
       )

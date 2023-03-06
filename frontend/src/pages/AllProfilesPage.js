@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import WeekAPI from "../api/WeekAPI";
 import { Routes, Route } from "react-router-dom";
 import ProfileList from "../components/ProfileList";
+// import ProfileForm from "../components/ProfileForm"
 import ProfilePage from './ProfilePage.js'
 
 
 function AllProfilesPage() {
-  const [profiles, setProfiles] = useState([]);  // holds all week, day, and workout data in 1 file
+  const [profiles, setProfiles] = useState([]);  
   
 
 
@@ -27,6 +28,10 @@ function AllProfilesPage() {
  
   return (
     <div>
+      {/* <ProfileForm /> */}
+      <br></br>
+      <br></br>
+      <br></br>
       <Routes>
         <Route
           path="/"

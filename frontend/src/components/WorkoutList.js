@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import "../App.css"
 
 function WorkoutList (props) {
   
@@ -10,7 +11,7 @@ function WorkoutList (props) {
     
     return props.workouts.map((workout, index) => {
       return (
-        <ul key={index}>
+        <ul class="no-bullet" key={index}>
           <li><Link to={`workout/${workout.id}/`}> { workout.title }</Link></li>
         </ul>
       )
