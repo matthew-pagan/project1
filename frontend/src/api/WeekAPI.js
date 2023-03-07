@@ -1,7 +1,5 @@
 const BASE_URL = "http://127.0.0.1:8000/workouts/"  
 
-
-
 const tryCatchFetch = async (url) => {
 
   const token = localStorage.getItem("token")
@@ -37,7 +35,7 @@ const fetchWeeks = async () => {
 }
 
 const fetchProfiles = async () => {
-  const url = BASE_URL + "profile/"
+  const url = BASE_URL + "profiles/"
   return await tryCatchFetch(url);
 }
 

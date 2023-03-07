@@ -21,7 +21,8 @@ function DayPage({days}) {
           path="/"
           element={
             <div>
-              <h2>Day Page</h2>
+              <br></br>
+              <h2>Bar Path Program</h2>
               <hr />
               <WorkoutList workouts={answer.workouts} />
             </div>

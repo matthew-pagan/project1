@@ -26,7 +26,8 @@ function WeekPage({weeks}) {
           path="/"
           element={
             <div>
-              <h2>Week Page</h2>
+              <br></br>
+              <h2>Bar Path Program</h2>
               <hr />
               <DayList days={answer.days} />
             </div>

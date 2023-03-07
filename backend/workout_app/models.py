@@ -43,10 +43,10 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     WEIGHTS_CHOICES = [ (1, "LB"), (2, "KG")]
     weights = models.IntegerField(choices=WEIGHTS_CHOICES, default=1, null=False, blank=False) # metric and english, or pounds and kilos
-    max_snatch = models.IntegerField(default=0, null=False, blank=False)
-    max_cleanjerk = models.IntegerField(default=0, null=False, blank=False)
-    max_frontsquat = models.IntegerField(default=0, null=False, blank=False)
-    max_backsquat = models.IntegerField(default=0, null=False, blank=False)
+    max_snatch = models.IntegerField(null=True)
+    max_cleanjerk = models.IntegerField(null=True)
+    max_frontsquat = models.IntegerField(null=True)
+    max_backsquat = models.IntegerField(null=True)
     
 
     def __str__(self):

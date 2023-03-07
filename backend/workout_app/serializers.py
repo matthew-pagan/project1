@@ -23,7 +23,6 @@ class WeekSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -37,4 +36,10 @@ class UserSerializer(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ['user', 'weights', 'max_snatch', 'max_cleanjerk', 'max_frontsquat', 'max_backsquat']
+        fields = '__all__'
+
+    def create_profile(self, validated_data):
+        profile = Profile.objects.create_profile(**validated_data)
+        return profile  
+
+    

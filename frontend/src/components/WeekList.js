@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import '../App.css';
+// import '../App.css';
 
 function WeekList (props) {
 
@@ -10,10 +10,10 @@ function WeekList (props) {
     
     return props.weeks.map((week, index) => {
       return (
-        <div className="list-container">
-          <ul class="no-bullet" key={index} >
-            <li><Link to={`week/${week.week_number}/`}>WEEK { week.week_number }</Link></li>
-          </ul>
+        <div>
+          <div key={index} >
+            <p><Link to={`week/${week.week_number}/`}>WEEK { week.week_number }</Link></p>
+          </div>
         </div>
       )
     })
@@ -24,12 +24,53 @@ function WeekList (props) {
 
   return (
     <div>
-      <h3>Pick the Week</h3>
+      <h3>Select the Week</h3>
+      <br></br>
       <div className="list-container">
-        <ul>{ renderWeeks() }</ul>
+        <p>{ renderWeeks() }</p>
       </div>
     </div>
   )
 }
 
 export default WeekList
+
+
+
+
+
+// import { Link } from "react-router-dom"
+// import '../App.css';
+
+// function WeekList (props) {
+
+//   const renderWeeks = () => {
+//     if (!props.weeks) {
+//       return 'Hello there is nothing'  // change to null when done testing
+//     }
+    
+//     return props.weeks.map((week, index) => {
+//       return (
+//         <div className="list-container">
+//           <p key={index} >
+//             <p><Link to={`week/${week.week_number}/`}>WEEK { week.week_number }</Link></p>
+//           </p>
+//         </div>
+//       )
+//     })
+//   }
+
+//   console.log(props.weeks)
+//   // console.log("Weeks in WeekList:", props.weeks);  // delete when done testing
+
+//   return (
+//     <div>
+//       <h3>Pick the Week</h3>
+//       <div className="list-container">
+//         <p>{ renderWeeks() }</p>
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default WeekList

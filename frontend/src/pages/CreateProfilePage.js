@@ -8,6 +8,10 @@ function CreateProfilePage() {
 
   return (
     <div>
+      <br></br>
+        <h2>Bar Path Program</h2>
+        <hr />
+        <br></br>
       <ProfileForm />
     </div>
   )

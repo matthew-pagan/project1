@@ -12,14 +12,15 @@ function WorkoutPage({workouts}) {
   console.log("This is exercise", exercise)
   return (
     <div>
-      <h2>Workout Page</h2>
+      <br></br>
+      <h2>Bar Path Program</h2>
       <hr />
+      <br></br>
       <h4>{ exercise.title }</h4>
       <div className="workout_breakdown">
         {exercise.note && <p>{ exercise.note }</p>}
-        {exercise.sets && <p>{ exercise.sets } sets</p>}
-        {exercise.reps && <p>{ exercise.reps } reps</p>}
-        {exercise.percentage && <p>{ exercise.percentage }%</p>}
+        {exercise.sets && exercise.reps && (<p>Perform { exercise.sets } sets of { exercise.reps } reps</p>)}
+        {exercise.percentage && <p>at { exercise.percentage }% of your 1 rep max</p>}
       </div>
       <YoutubeSearch defaultQuery={exercise.title} />
     </div>
@@ -27,3 +28,4 @@ function WorkoutPage({workouts}) {
 }
 
 export default WorkoutPage
+

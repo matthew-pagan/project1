@@ -11,9 +11,11 @@ function DayList (props) {
     // figure out how to list only the days of the specific week page
     return props.days.map((day, index) => {
       return (
-        <ul class="no-bullet" key={index}>
-          <li><Link to={`day/${day.day_number}/`}>DAY { day.day_number.slice(-1) }</Link></li>
-        </ul>
+        <div>
+        <div key={index}>
+          <p><Link to={`day/${day.day_number}/`}>DAY { day.day_number.slice(-1) }</Link></p>
+          </div>
+        </div>
       )
     })
   }
@@ -23,8 +25,11 @@ function DayList (props) {
 
   return (
     <div>
-      <h3>Pick the Day</h3>
-    <ul>{ renderDays() }</ul>
+      <h3>Select the Day</h3>
+      <br></br>
+      <div className="list-container">
+        <p>{ renderDays() }</p>
+      </div>
     </div>
   )
 }

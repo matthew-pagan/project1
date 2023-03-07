@@ -4,16 +4,19 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-const UpdateProfileForm = ({ profile }) => {  //it is asssuming we have the profileID here, CONSOLE.LOG THIS! i dont think it is there.  if its not then do what we did with profileform.js and to an axios requeset and use that response to get your user id.
+const UpdateProfileForm = ({ profile }) => {  
+  // console.log(profile, 'form propfile props')
   const [formData, setFormData] = useState({
-    user: 'profile.user',
+    
+    user: '',
     weights: '',
     max_snatch: '',
     max_cleanjerk: '',
     max_frontsquat: '',
     max_backsquat: '',
+    id: profile.id,
   });
-  console.log(profile.user, "This is the profile user")  // delete when done
+  // delete when done
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
   const navigate = useNavigate()
@@ -24,23 +27,28 @@ const UpdateProfileForm = ({ profile }) => {  //it is asssuming we have the prof
     const fetchProfile = async () => {
       const token = localStorage.getItem("token");
       try {
-        const response = await axios.get('http://127.0.0.1:8000/workouts/profile/' + profile.user + '/', {
+        const response = await axios.get('http://127.0.0.1:8000/workouts/profile/' + profile.id + '/', {
           headers: {
             Authorization: `Token ${token}`,
           },
         })
         setFormData(response.data)
+       
+
       } catch (err) {
-        console.log(err.response.data)
+        // console.log(err.response.data)
       }
     };
     fetchProfile();
   }, []);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, user: profile.user, [e.target.name]: e.target.value })
+    setFormData({ ...formData, user: profile.id, [e.target.name]: e.target.value })
+    // setFormData({ formData })
+    console.log(formData, 'SUBMITTED DATA TO BACKEND');
   };
 
+  console.log(formData, 'SUBMITTED DATA TO BACKEND');
   const handleUpdate = async (e) => {
     e.preventDefault();
     // validation of user-imputed data, numbers cannot be 0
@@ -64,7 +72,7 @@ const UpdateProfileForm = ({ profile }) => {  //it is asssuming we have the prof
     // submission of the updated information
     const token = localStorage.getItem("token");
     try {
-      await axios.put('http://127.0.0.1:8000/workouts/profile/' + profile.user + '/', formData, {
+      await axios.put('http://127.0.0.1:8000/workouts/profile/' + profile.id + '/', formData, {
         headers: {
           Authorization: `Token ${token}`,
         },
@@ -132,13 +140,23 @@ const UpdateProfileForm = ({ profile }) => {  //it is asssuming we have the prof
           <input type='number' id='max_backsquat' name='max_backsquat' value={formData.max_backsquat} onChange={handleChange} className='form-control' />
           {errors.max_backsquat && <span className='text-danger'>{errors.max_backsquat}</span>}
         </div>
+        {/* <div className='form-group'>
+          <label>User:</label>
+          <input type='number' id='user' name='user' value={formData.user} onChange={handleChange} className='form-control' />
+          {errors.user && <span className='text-danger'>{errors.user}</span>}
+        </div>
+        <div className='form-group'>
+          <label>Id:</label>
+          <input type='number' id='id' name='id' value={formData.id} onChange={handleChange} className='form-control' />
+          {errors.user && <span className='text-danger'>{errors.id}</span>}
+        </div> */}
         <br></br>
         <div className='form-group'>
-        <button type='submit' className='btn btn-primary'>Update Profile</button>
+        <button type='submit' className='btn btn-primary btn-sm'>Submit and Go to Workouts</button>
         <br></br>
         <br></br>
         <br></br>
-        <button onClick={handleDelete} className='btn btn-secondary'>Delete Profile</button>
+        <button onClick={handleDelete} className='btn btn-secondary btn-sm'>Delete Profile</button>
         </div>
       </form>
     </div>

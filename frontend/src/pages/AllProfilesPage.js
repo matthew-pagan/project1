@@ -28,16 +28,13 @@ function AllProfilesPage() {
  
   return (
     <div>
-      {/* <ProfileForm /> */}
-      <br></br>
-      <br></br>
-      <br></br>
       <Routes>
         <Route
           path="/"
           element={
             <div>
-              <h2>Profiles Page</h2>
+              <br></br>
+              <h2>Bar Path Program</h2>
               <hr />
               <ProfileList profiles={profiles} />
             </div>

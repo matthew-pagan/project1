@@ -11,9 +11,7 @@ function WorkoutList (props) {
     
     return props.workouts.map((workout, index) => {
       return (
-        <ul class="no-bullet" key={index}>
-          <li><Link to={`workout/${workout.id}/`}> { workout.title }</Link></li>
-        </ul>
+        <p><Link to={`workout/${workout.id}/`}> { workout.title }</Link></p>
       )
     })
   }
@@ -23,8 +21,11 @@ function WorkoutList (props) {
 
   return (
     <div>
-      <h3>Pick the Workout</h3>
-    <ul>{ renderWorkouts() }</ul>
+      <h3>Select the Exercise</h3>
+      <br></br>
+      <div className="list-container">
+        <p>{ renderWorkouts() }</p>
+      </div>
     </div>
   )
 }

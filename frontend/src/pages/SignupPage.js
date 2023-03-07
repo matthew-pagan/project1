@@ -42,7 +42,12 @@ const SignupPage = () => {
 
   return (
     <div>
-      <h1>Create An Account</h1>
+      <br></br>
+      <h2>Bar Path Program</h2>
+      <hr />
+      <br></br>
+      <h3>Create An Account</h3>
+      <br></br>
       <form onSubmit={e => onSubmit(e)}>
         <input
           type="text"

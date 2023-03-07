@@ -6,16 +6,19 @@ function StartPage() {
   
   return (
     <div>
+      <br></br>
+      <br></br>
       <h1>Bar Path Program</h1>
-      <p>Please select an option:</p>
+      <hr />
+      <br></br>
       <div>
         <Link to="/signin">
-          <button>Sign In To Start</button>
+          <button className='btn btn-primary'>Sign In to Start</button>
           <br></br>
           <br></br>
         </Link>
         <Link to="/signup">
-          <button>Create An Account</button>
+          <button className='btn btn-primary btn-sm'>Create An Account</button>
         </Link>
       </div>
     </div>
