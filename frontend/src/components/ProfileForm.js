@@ -67,7 +67,8 @@ const ProfileForm = () => {
     setFormData({ ...formData, [e.target.name]: Number(e.target.value) });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     console.log(formData); // add this line
     const token = localStorage.getItem("token")
     try {
@@ -115,22 +116,18 @@ const ProfileForm = () => {
         <div className='form-group'>
           <label>Max Snatch:</label>
           <input type='number' name='max_snatch' value={max_snatch} onChange={handleChange} className='form-control' />
-          {/* {errors.max_snatch && <span className='text-danger'>{errors.max_snatch}</span>} */}
         </div>
         <div className='form-group'>
           <label>Max Clean &amp; Jerk:</label>
           <input type='number' name='max_cleanjerk' value={max_cleanjerk} onChange={handleChange} className='form-control' />
-          {/* {errors.max_cleanjerk && <span className='text-danger'>{errors.max_cleanjerk}</span>} */}
         </div>
         <div className='form-group'>
           <label>Max Front Squat:</label>
           <input type='number' name='max_frontsquat' value={max_frontsquat} onChange={handleChange} className='form-control' />
-          {/* {errors.max_frontsquat && <span className='text-danger'>{errors.max_frontsquat}</span>} */}
         </div>
         <div className='form-group'>
           <label>Max Back Squat:</label>
           <input type='number' name='max_backsquat' value={max_backsquat} onChange={handleChange} className='form-control' />
-          {/* {errors.max_backsquat && <span className='text-danger'>{errors.max_backsquat}</span>} */}
         </div>
         {/* <div className='form-group'>
           <label>User:</label>
