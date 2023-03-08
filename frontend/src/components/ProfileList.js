@@ -13,11 +13,11 @@ function ProfileList (props) {
       // console.log("chads test", props.profiles)
       const profile = props.profiles[key]; 
       return (
-        <ul key={index}>
-          <li>
+        <div key={index}>
+          <p>
             <Link to={`../${profile.id}/`}>Athlete {profile.id}</Link>
-          </li>
-        </ul>
+          </p>
+        </div>
       );
     });
   };

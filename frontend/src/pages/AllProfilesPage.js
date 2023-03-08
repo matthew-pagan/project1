@@ -9,8 +9,6 @@ import ProfilePage from './ProfilePage.js'
 function AllProfilesPage() {
   const [profiles, setProfiles] = useState([]);  
   
-
-
   useEffect(() => {
     const getProfiles = async () => {
       const data = await WeekAPI.fetchProfiles();

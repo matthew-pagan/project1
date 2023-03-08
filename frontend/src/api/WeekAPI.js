@@ -40,7 +40,7 @@ const fetchProfiles = async () => {
 }
 
 const fetchProfilesByID = async (userID) => {
-  const url = BASE_URL + "profile/`${userID}/`"  // "profile/`${userID}`"
+  const url = BASE_URL + `profile/${userID}/`  // "profile/`${userID}`"
   return await tryCatchFetch(url);
 }
 

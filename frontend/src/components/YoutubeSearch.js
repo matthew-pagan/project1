@@ -12,7 +12,7 @@ function YoutubeSearch(props) {
   const searchYoutube = async (query) => {
     try {
       const response = await axios.get(
-        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${query}&key=[1b7aee99eaf05c320db58a69345235258e9c9110] HTTP/1.1`
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${query}&key=1b7aee99eaf05c320db58a69345235258e9c9110`
       );
       setVideos(response.data.items);
     } 
