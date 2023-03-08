@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 function YoutubeSearch(props) {
   const [videos, setVideos] = useState([]);
@@ -12,7 +15,7 @@ function YoutubeSearch(props) {
   const searchYoutube = async (query) => {
     try {
       const response = await axios.get(
-        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${query}&key=1b7aee99eaf05c320db58a69345235258e9c9110`
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${query}&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
       );
       setVideos(response.data.items);
     } 
