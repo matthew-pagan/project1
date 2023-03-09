@@ -1,5 +1,3 @@
-// import { useState, useEffect } from "react"
-// import WeekAPI from "../api/WeekAPI"
 import DayList from "../components/DayList"
 import { useParams } from "react-router-dom"
 import React from "react"

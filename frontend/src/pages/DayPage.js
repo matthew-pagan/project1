@@ -39,18 +39,3 @@ function DayPage({days}) {
 }
 
 export default DayPage
-
-
-
-
-
-// function DayPage() {
-  
-//   return (
-//     <div>
-//       <h2>Day Page</h2>
-//     </div>
-//   )
-// }
-
-// export default DayPage

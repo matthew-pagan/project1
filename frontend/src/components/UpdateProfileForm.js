@@ -1,5 +1,3 @@
-// handles the retrieval, update, deletion of user profiles (RUD of CRUD)
-
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -45,10 +43,10 @@ const UpdateProfileForm = ({ profile }) => {
   const handleChange = (e) => {
     setFormData({ ...formData, user: profile.id, [e.target.name]: e.target.value })
     // setFormData({ formData })
-    console.log(formData, 'SUBMITTED DATA TO BACKEND');
+    console.log(formData, 'SUBMITTED DATA TO BACKEND'); // delete when done, for testing only
   };
 
-  console.log(formData, 'SUBMITTED DATA TO BACKEND');
+  console.log(formData, 'SUBMITTED DATA TO BACKEND');  // delete when done, for testing only
   const handleUpdate = async (e) => {
     e.preventDefault();
     // validation of user-imputed data, numbers cannot be 0

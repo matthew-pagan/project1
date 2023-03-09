@@ -1,7 +1,5 @@
-// import WorkoutList from "../components/WorkoutList"
 import { useParams } from "react-router-dom"
 import React from "react"
-import YoutubeSearch from "../components/YoutubeSearch"
 
 function WorkoutPage({workouts}) {
   
@@ -22,10 +20,8 @@ function WorkoutPage({workouts}) {
         {exercise.sets && exercise.reps && (<p>Perform { exercise.sets } sets of { exercise.reps } reps</p>)}
         {exercise.percentage && <p>at { exercise.percentage }% of your 1 rep max</p>}
       </div>
-      <YoutubeSearch defaultQuery={exercise.title} />
     </div>
   )
 }
 
 export default WorkoutPage
-

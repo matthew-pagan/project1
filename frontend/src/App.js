@@ -29,21 +29,3 @@ function App() {
 }
 
 export default App;
-
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <BrowserRouter>
-//         <Routes>
-//           <Route exact path="/workouts/*" element={<HomePage />} />
-//           <Route exact path="/signin/" element={<SigninPage />} />
-//           <Route exact path="/signup/" element={<SignupPage />} />
-//           <Route exact path="/profile/*" element={<ProfilePage />} />
-//         </Routes>
-//       </BrowserRouter>
-//     </div>
-//   );
-// }
-
-// export default App;
