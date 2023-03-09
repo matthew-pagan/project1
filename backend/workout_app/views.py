@@ -139,8 +139,8 @@ class ProfileViewSet(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, user_id=None):
-        profile = Profile.objects.get(user_id=user_id)
+    def delete(self, request, id):
+        profile = Profile.objects.get(id=id)
         profile.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 

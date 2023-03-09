@@ -89,13 +89,14 @@ const UpdateProfileForm = ({ profile }) => {
     if (window.confirm('Are you sure you want to delete your profile?')) {
       const token = localStorage.getItem("token");
       try {
-        await axios.delete('http://127.0.0.1:8000/workouts/profile/' + profile.user + '/', {
+        await axios.delete('http://127.0.0.1:8000/workouts/profile/' + profile.id + '/', {
           headers: {
             Authorization: `Token ${token}`,
           },
         })
-        navigate('/create/') // goes back to create profile page
         alert('Profile has been deleted')
+        setSubmitted(true)
+        navigate('/app/') 
       } catch (err) {
         console.log(err.response.data)
       }
