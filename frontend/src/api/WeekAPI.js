@@ -7,11 +7,9 @@ const tryCatchFetch = async (url) => {
   const headers = {}
   if (token) {
     headers.Authorization = `Token ${token}`;
-    // console.log(headers, "This is our header token data1") // remove when done
   }
 
   try {
-    // console.log(headers, "This is our header token data2") // remove when done
     const response = await fetch(url, {headers})
     if (response.ok) {
       return await response.json()
@@ -26,21 +24,21 @@ const tryCatchFetch = async (url) => {
   }
 }
 
+//fetch all weeks
 const fetchWeeks = async () => {
-
   const url = BASE_URL
-  // console.log("Fetching weeks from API..."); // Delete this line when done testing
   return await tryCatchFetch(url);
-  // console.log("Response from API:", response); // Delete this line when done testing
 }
 
+//fetch all profiles
 const fetchProfiles = async () => {
   const url = BASE_URL + "profiles/"
   return await tryCatchFetch(url);
 }
 
+//fetch one profile
 const fetchProfilesByID = async (userID) => {
-  const url = BASE_URL + `profile/${userID}/`  // "profile/`${userID}`"
+  const url = BASE_URL + `profile/${userID}/`
   return await tryCatchFetch(url);
 }
 

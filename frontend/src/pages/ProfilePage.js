@@ -25,7 +25,7 @@ function ProfilePage({profiles}) {
       <h2>Bar Path Program</h2>
       <hr />
       <br></br>
-      <h4>Hello Athlete { athlete.id }!</h4>
+      <h4>Hello Athlete # { athlete.id }!</h4>
       <br></br>
       <p>These are your current 1 rep maxes:</p>
       <div className="profile_breakdown">
@@ -43,7 +43,7 @@ function ProfilePage({profiles}) {
         </Link>
       </div>
       <div>
-      <button className='btn btn-secondary btn-sm' onClick={handleButtonClick}>Update Maxes First</button>
+      <button className='btn btn-secondary btn-sm' onClick={handleButtonClick}>Update Profile</button>
       {showUpdateForm && <UpdateProfileForm profile={athlete}/>}
       </div>
       <br></br>

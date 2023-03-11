@@ -5,7 +5,6 @@ import axios from 'axios'
 const UpdateProfileForm = ({ profile }) => {  
   // console.log(profile, 'form propfile props')
   const [formData, setFormData] = useState({
-    
     user: '',
     weights: '',
     max_snatch: '',
@@ -25,7 +24,8 @@ const UpdateProfileForm = ({ profile }) => {
     const fetchProfile = async () => {
       const token = localStorage.getItem("token");
       try {
-        const response = await axios.get('http://127.0.0.1:8000/workouts/profile/' + profile.id + '/', {
+        const base_url = process.env.REACT_APP_BASE_URL
+        const response = await axios.get('http://${base_url}/profile/' + profile.id + '/', {
           headers: {
             Authorization: `Token ${token}`,
           },
@@ -70,7 +70,8 @@ const UpdateProfileForm = ({ profile }) => {
     // submission of the updated information
     const token = localStorage.getItem("token");
     try {
-      await axios.put('http://127.0.0.1:8000/workouts/profile/' + profile.id + '/', formData, {
+      const base_url = process.env.REACT_APP_BASE_URL
+      await axios.put('http://${base_url}/profile/' + profile.id + '/', formData, {
         headers: {
           Authorization: `Token ${token}`,
         },
@@ -89,7 +90,8 @@ const UpdateProfileForm = ({ profile }) => {
     if (window.confirm('Are you sure you want to delete your profile?')) {
       const token = localStorage.getItem("token");
       try {
-        await axios.delete('http://127.0.0.1:8000/workouts/profile/' + profile.id + '/', {
+        const base_url = process.env.REACT_APP_BASE_URL
+        await axios.delete('http://${base_url}/profile/' + profile.id + '/', {
           headers: {
             Authorization: `Token ${token}`,
           },
@@ -139,16 +141,6 @@ const UpdateProfileForm = ({ profile }) => {
           <input type='number' id='max_backsquat' name='max_backsquat' value={formData.max_backsquat} onChange={handleChange} className='form-control' />
           {errors.max_backsquat && <span className='text-danger'>{errors.max_backsquat}</span>}
         </div>
-        {/* <div className='form-group'>
-          <label>User:</label>
-          <input type='number' id='user' name='user' value={formData.user} onChange={handleChange} className='form-control' />
-          {errors.user && <span className='text-danger'>{errors.user}</span>}
-        </div>
-        <div className='form-group'>
-          <label>Id:</label>
-          <input type='number' id='id' name='id' value={formData.id} onChange={handleChange} className='form-control' />
-          {errors.user && <span className='text-danger'>{errors.id}</span>}
-        </div> */}
         <br></br>
         <div className='form-group'>
         <button type='submit' className='btn btn-primary btn-sm'>Submit and Go to Workouts</button>

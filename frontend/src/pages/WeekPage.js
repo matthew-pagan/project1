@@ -15,7 +15,7 @@ function WeekPage({weeks}) {
 
    
  
-  // console.log("Days in WeekPage:", days);  // delete when done testing
+  console.log("Days in WeekPage:", params.week_number);  // delete when done testing
 
   return (
     <div>

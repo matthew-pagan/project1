@@ -12,8 +12,6 @@ const ProfileForm = () => {
     max_backsquat: '',
   });
 
-  // const [profileExist, setProfileExist] = useState(false);
-  // const [errors, setErrors] = useState({});
   const [profileData, setProfileData] = useState(null)
   const [submitted, setSubmitted] = useState(false);
   
@@ -25,18 +23,18 @@ const ProfileForm = () => {
   const fetchUsers = async () => {
     const token = localStorage.getItem("token");
     try {
-      const response = await axios.get('http://127.0.0.1:8000/workouts/profile/', {
+      const base_url = process.env.REACT_APP_BASE_URL
+      const response = await axios.get('http://${base_url}/profile/', {
         headers: {
           Authorization: `Token ${token}`,
         },
       });
 
       const userIndex = (Math.max(...response.data.result.map(item => item.user)))
-      console.log("This is user # ", userIndex) // delete when done, for testing only
+      
       
       setFormData({
         ...formData, user: userIndex,
-        // user: response.data.result[userIndex].user + 1,  
       });
     } catch (err) {
       console.log(err);
@@ -46,13 +44,13 @@ const ProfileForm = () => {
   const fetchProfile = async () => {
     const token = localStorage.getItem("token");
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/workouts/profile/`, {
+      const base_url = process.env.REACT_APP_BASE_URL
+      const response = await axios.get(`http://${base_url}/profile/`, {
         headers: {
           Authorization: `Token ${token}`,
         },
       });
-      // console.log(response.data.result, "This is response") // delete when done
-      const user = response.data.result.find(object => object === localStorage.getItem("object")) // delete when done
+      const user = response.data.result.find(object => object === localStorage.getItem("object")) 
       setProfileData(user.id)
     } catch (err) {
       console.log(err);
@@ -73,7 +71,8 @@ const ProfileForm = () => {
     e.preventDefault();
     const token = localStorage.getItem("token")
     try {
-      const response = await axios.post('http://127.0.0.1:8000/workouts/profile/', formData, {
+      const base_url = process.env.REACT_APP_BASE_URL
+      const response = await axios.post('http://${base_url}/profile/', formData, {
         headers: {
           Authorization: 'Token ' + token 
         },
@@ -87,12 +86,12 @@ const ProfileForm = () => {
         max_backsquat: '',
       });
 
-      console.log("Handle Submit Response", response) // delete when done
-      console.log("Response", response.data.user) // delete when done
+      // console.log("Handle Submit Response", response) // delete when done
+      // console.log("Response", response.data.user) // delete when done
+      // console.log(response.data.id)
 
       alert('Profile has been created');
       setSubmitted(true)
-      // navigate(`/profile/${response.data.id}/`)
       navigate('/workouts/' ); 
     } catch (err) {
       console.log(err.response.data);

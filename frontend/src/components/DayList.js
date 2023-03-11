@@ -5,10 +5,10 @@ function DayList (props) {
   
   const renderDays = () => {
     if (!props.days) {
-      return 'Hello there is nothing' // change to null when done
+      return 'Hello there is nothing' 
     }
     
-    // figure out how to list only the days of the specific week page
+    // lists only the days that are in the week
     return props.days.map((day, index) => {
       return (
         <div>
@@ -20,10 +20,7 @@ function DayList (props) {
     })
   }
   
-  console.log(props.days) 
-  // console.log("Days in DayList:", props.days);  // delete when done testing
-
-  return (
+    return (
     <div>
       <h3>Select the Day</h3>
       <br></br>

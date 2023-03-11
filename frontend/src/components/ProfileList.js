@@ -15,7 +15,7 @@ function ProfileList (props) {
       return (
         <div key={index}>
           <p>
-            <Link to={`../${profile.id}/`}>Athlete {profile.id}</Link>
+            <Link to={`../${profile.id}/`}>Athlete # {profile.id}</Link>
           </p>
         </div>
       );
