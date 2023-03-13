@@ -1,5 +1,5 @@
 from pathlib import Path
-import os
+# import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -8,18 +8,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECRET_KEY = 'django-insecure-i%o&*5t!)*axv9r24&yu@50gtl&&6#80j&@q8lpkf0hqlp71b)'
+SECRET_KEY = 'django-insecure-i%o&*5t!)*axv9r24&yu@50gtl&&6#80j&@q8lpkf0hqlp71b)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 
-SECRET_KEY = os.getenv("SECRET_KEY")
+# SECRET_KEY = os.getenv("SECRET_KEY")
 
-DEBUG = True if os.getenv("DEBUG") == "True" else False
+# DEBUG = True if os.getenv("DEBUG") == "True" else False
 
-ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -80,14 +80,14 @@ WSGI_APPLICATION = 'workout_proj.wsgi.application'
 
 DATABASES = {
     'default': {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "db",  # set in docker-compose.yml
-        "PORT": 5432,  # default postgres port
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'workoutdb', 
+        # "ENGINE": "django.db.backends.postgresql",
+        # "NAME": "postgres",
+        # "USER": "postgres",
+        # "PASSWORD": "postgres",
+        # "HOST": "db",  # set in docker-compose.yml
+        # "PORT": 5432,  # default postgres port
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'workoutdb', 
     }
 }
 
