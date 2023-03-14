@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 // import ProfileForm from "../components/ProfileForm"
 
 const SignupPage = () => {
@@ -41,7 +41,69 @@ const SignupPage = () => {
   };
 
   return (
-    <div>
+    <div className='container mt-5'>
+        <h1 className="textalignleft" >Sign Up</h1>
+        <p className="textalignleft">Create your Bar Path Account</p>
+        <form className="textalignleft" onSubmit={e => onSubmit(e)}>
+            <div className='form-group'>
+                <input
+                    className='form-control'
+                    type='text'
+                    placeholder='Username*'
+                    name='username'
+                    value={username}
+                    onChange={e => onChange(e)}
+                    required
+                />
+            </div>
+            {/* <div className='form-group'>
+                <input
+                    className='form-control'
+                    type='email'
+                    placeholder='Email*'
+                    name='email'
+                    value={email}
+                    onChange={e => onChange(e)}
+                    required
+                />
+            </div> */}
+            <div className='form-group'>
+                <input
+                    className='form-control'
+                    type='password'
+                    placeholder='Password*'
+                    name='password'
+                    value={password}
+                    onChange={e => onChange(e)}
+                    minLength='6'
+                    required
+                />
+            </div>
+            {/* <div className='form-group'>
+                <input
+                    className='form-control'
+                    type='password'
+                    placeholder='Confirm Password*'
+                    name='re_password'
+                    value={re_password}
+                    onChange={e => onChange(e)}
+                    minLength='6'
+                    required
+                />
+            </div> */}
+            <button className='btnbtn-primary' type='submit'>Register</button>
+        </form>
+        <br></br>
+        <p className="textalignleft">
+            Already have an account? <Link to='/signin'>Sign In</Link>
+        </p>
+    </div>
+);
+};
+
+export default SignupPage
+
+{/* <div>
       <br></br>
       <h2>Bar Path Program</h2>
       <hr />
@@ -69,8 +131,4 @@ const SignupPage = () => {
         <br></br>
         <input type="submit" value="Signup" />
       </form>
-    </div>
-  );
-};
-
-export default SignupPage
+    </div> */}

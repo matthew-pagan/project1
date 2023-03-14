@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 // import { Routes, Route } from "react-router-dom";
-import { Navigate } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 
 const SigninPage = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +11,7 @@ const SigninPage = () => {
   const { username, password } = formData
   const [redirect, setRedirect] = useState(false)
   const [error, setError] = useState(null)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -34,6 +35,7 @@ const SigninPage = () => {
       localStorage.setItem('token', res.data.token)
       console.log(res.data) //  delete when done
       setRedirect(true)
+      setIsAuthenticated(true)
     } catch (err) {
       console.error(err)
       setError('Invalid credentials')
@@ -45,7 +47,49 @@ const SigninPage = () => {
   }
 
   return (
-    <div>
+    <div className="container mt-5">
+      <h1 className="textalignleft">Sign In</h1>
+      <p className="textalignleft">Sign into your Bar Path Account</p>
+      <form className="textalignleft" onSubmit={e => onSubmit(e)}>
+        <div className='form-group'>
+          <input 
+            className="form-control"
+            type="text"
+            placeholder="Username"
+            name="username"
+            value={username}
+            onChange={e => onChange(e)}
+            />
+
+        </div>
+        <div className='form-group'>
+          <input 
+            className="form-control"
+            type='password'
+            placeholder='Password'
+            name='password'
+            value={password}
+            onChange={e => onChange(e)}
+            minLength='6'
+            required
+            />
+        </div>
+        <button className="btnbtn-primary" type='submit'>Login</button>
+      </form>
+      <br></br>
+      <p className='textalignleft'>
+        Don't have an account? <Link to='/signup'>Sign Up</Link>
+      </p>
+      <p className='textalignleft'>
+        Forgot Your Password? <Link to='/reset-password'>Reset Password</Link>
+      </p>
+    </div>
+);
+}
+
+export default SigninPage
+
+{/* <div>
       <br></br>
       <h2>Bar Path Program</h2>
       <hr />
@@ -74,8 +118,4 @@ const SigninPage = () => {
         <br></br>
         <input type="submit" value="Signin" />
       </form>
-    </div>
-  )
-}
-
-export default SigninPage
+    </div> */}
