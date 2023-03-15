@@ -43,7 +43,7 @@ const SigninPage = () => {
   }
 
   if (redirect) {
-    return <Navigate to="/create/" replace={true} />  // change navigation to /profile/ for adding data based on Profile model fields
+    return <Navigate to="/workouts/" replace={true} username={formData.username}/>  // change navigation to /profile/ for adding data based on Profile model fields
   }
 
   return (

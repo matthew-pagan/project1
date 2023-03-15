@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import ProfileList from "../components/ProfileList";
 // import ProfileForm from "../components/ProfileForm"
 import ProfilePage from './ProfilePage.js'
+// import fetchProfileByID from '../api/WeekAPI'
 
 
 function AllProfilesPage() {
@@ -23,7 +24,8 @@ function AllProfilesPage() {
 
   // console.log("All Profiles", profiles); // delete when done testing
   
- 
+  console.log(localStorage.getItem('token'))
+
   return (
     <div>
       <Routes>

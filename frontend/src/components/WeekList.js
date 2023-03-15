@@ -31,9 +31,6 @@ function WeekList (props) {
       </div>
       <br></br>
       <br></br>
-      <Link to="/profile/">
-        <button className='btn btn-primary btn-sm'>See All Profiles</button>
-      </Link>
     </div>
   )
 }

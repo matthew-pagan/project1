@@ -12,6 +12,16 @@ function ProfilePage({profiles}) {
   const athlete = profiles.find(profile => profile.id === Number(params.profileID))
   // console.log("Params ID", params.profileID)  // delete when done testing
   
+  // useEffect(() => {
+  //   const getProfiles = async () => {
+  //     const data = await WeekAPI.fetchProfiles();
+  //     if (data) {
+  //       setProfiles(data.result);  
+  //     }
+  //   };
+  //   getProfiles();
+  // }, []);
+
   const [showUpdateForm, setShowUpdateForm] = useState(false)
 
   const handleButtonClick = () => {

@@ -8,15 +8,17 @@ import isAuthenticated from '../pages/SigninPage'
 
 function Appnav ({onSignout}){
 
-    const [loggedin, setLoggedin] = React.useState(null);
+    const [loggedin, setLoggedin] = React.useState(false);
 
+    console.log(window.location.pathname)
   
     React.useEffect(() => {
-      if (isAuthenticated){
-        setLoggedin(localStorage.getItem('token'))
-        console.log(localStorage.getItem('token'))
+      if (loggedin && window.location.pathname != '/app'){
+        window.location.reload(false)
+        console.log(loggedin)
       }
-      else{
+      else {
+        setLoggedin(localStorage.getItem('token'))
       }
     }, []);
     
@@ -50,15 +52,19 @@ function Appnav ({onSignout}){
     const authLinks = () => (
         <Fragment>
             <li className='nav-item active'>
-                <Nav.Link href='/home'>Home</Nav.Link>
+                <Nav.Link href='/workouts/'>Workouts</Nav.Link>
             </li>
             <br></br>
             <li className='nav-item active'>
-                <Nav.Link href='/sections/addclient/'>Add a New Client</Nav.Link>
+                <Nav.Link href='/profile/1'>My Profile</Nav.Link>
             </li>
             <br></br>
             <li className='nav-item active'>
-                <Nav.Link href='https://blog.securestrux.com/'>SecureStrux News</Nav.Link>
+                <Nav.Link href='/profile/'>See All Profiles</Nav.Link>
+            </li>
+            <br></br>
+            <li className='nav-item active'>
+                <Nav.Link href='https://blog.nasm.org/'>NASM Fitness Blog</Nav.Link>
             </li>
             <br></br>
             <li className='nav-item active'>

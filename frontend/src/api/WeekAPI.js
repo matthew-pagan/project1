@@ -37,7 +37,7 @@ const fetchProfiles = async () => {
 }
 
 //fetch one profile
-const fetchProfilesByID = async (userID) => {
+const fetchProfileByID = async (userID) => {
   const url = BASE_URL + `profile/${userID}/`
   return await tryCatchFetch(url);
 }
@@ -46,7 +46,7 @@ const fetchProfilesByID = async (userID) => {
 const exportItems = {
   fetchWeeks,
   fetchProfiles,
-  fetchProfilesByID
+  fetchProfileByID
 }
 
 export default exportItems

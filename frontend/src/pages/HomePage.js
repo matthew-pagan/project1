@@ -36,7 +36,6 @@ function HomePage() {
           element={
             <div>
               <br></br>
-              <h2>Bar Path Program</h2>
               <hr />
               <WeekList weeks={weeks} />
             </div>
@@ -49,7 +48,6 @@ function HomePage() {
       </Routes>
       <br></br>
       <br></br>
-      <Link to='/app' text="signout"><Signout /></Link>
     </div>
   );
 }
