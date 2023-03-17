@@ -40,7 +40,7 @@ function Appnav ({onSignout}){
     const guestLinks = () => (
         <Fragment>
             <li className='nav-item active'>
-                <Nav.Link href='/signin'>Login</Nav.Link>
+                <Nav.Link className='ex2' href='/signin'>Login</Nav.Link>
             </li>
             <br></br>
             <li className='nav-item active'>
@@ -52,23 +52,23 @@ function Appnav ({onSignout}){
     const authLinks = () => (
         <Fragment>
             <li className='nav-item active'>
-                <Nav.Link href='/workouts/'>Workouts</Nav.Link>
+                <Nav.Link className='ex2' href='/workouts/'>Workouts</Nav.Link>
             </li>
             <br></br>
             <li className='nav-item active'>
-                <Nav.Link href='/profile/1'>My Profile</Nav.Link>
+                <Nav.Link className='ex2' href='/myprofile/'>My Profile</Nav.Link>
             </li>
             <br></br>
             <li className='nav-item active'>
-                <Nav.Link href='/profile/'>See All Profiles</Nav.Link>
+                <Nav.Link className='ex2' href='/profile/'>See All Profiles</Nav.Link>
             </li>
             <br></br>
             <li className='nav-item active'>
-                <Nav.Link href='https://blog.nasm.org/'>NASM Fitness Blog</Nav.Link>
+                <Nav.Link className='ex2' href='https://blog.nasm.org/'>NASM Fitness Blog</Nav.Link>
             </li>
             <br></br>
             <li className='nav-item active'>
-                <Nav.Link href='/app' onClick={handleSignout} text="signout">Signout</Nav.Link>
+                <Nav.Link className='ex2' href='/app' onClick={handleSignout} text="signout">Signout</Nav.Link>
             </li>
         </Fragment>
     );

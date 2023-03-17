@@ -11,6 +11,7 @@ import StartPage from './pages/StartPage.js'
 import Layout from './hocs/Layout';
 import Appnav from './components/Appnav';
 import { Provider } from 'react-redux';
+import MyProfilePage from './pages/MyProfilePage';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route exact path="/create/" element={<CreateProfilePage />} />
             {/* <Route exact path="/update/" element={<UpdateProfilePage />} /> */}
             <Route exact path="/profile/*" element={<AllProfilesPage />} />
+            <Route exact path="/myprofile/" element={<MyProfilePage />} />
             </Routes>
         </Layout>
       </Router>

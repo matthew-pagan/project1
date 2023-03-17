@@ -151,4 +151,13 @@ button:focus-visible {
   border: 1px solid #000d80;
   text-align: left;
 }
+.ex2:hover {
+  font-size: 102%;
+  color: white;
+}
+.ex2:active{
+  font-size: 98%;
+  background-color: #ffffff;
+  opacity: 0.3;
+}
 }

@@ -25,6 +25,7 @@ function AllProfilesPage() {
   // console.log("All Profiles", profiles); // delete when done testing
   
   console.log(localStorage.getItem('token'))
+  console.log(profiles)
 
   return (
     <div>

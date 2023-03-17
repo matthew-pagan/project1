@@ -25,7 +25,7 @@ const UpdateProfileForm = ({ profile }) => {
       try {
         // const base_url = process.env.REACT_APP_BASE_URL
         const response = await axios.get(
-          "http://127.0.0.1:8000/workouts/profile/" + profile.id + "/",
+          "http://127.0.0.1:8000/workouts/profile/",
           {
             headers: {
               Authorization: `Token ${token}`,
